@@ -1,0 +1,6 @@
+flask
+networkx
+pygraphviz
+matplotlib
+notion-client
+gunicorn

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Embedded Image Widget</title>
+    <style>
+        /* Add your CSS styles here */
+        .image-container {
+            width: 100%; /* Full width */
+        }
+        .image-container img {
+            display: block;
+            max-width: 100%; /* Ensure image doesn't exceed container */
+            height: auto; /* Maintain aspect ratio */
+            cursor: pointer; /* Change cursor to pointer on hover */
+        }
+    </style>
+</head>
+<body>
+
+<div class="image-container">
+    <!-- Change the src attribute to your desired image -->
+    <img src="{{ url_for('get_graph', task_id=task_id) }}" alt="Full-size Image" onclick="handleClick(event)">
+</div>
+
+<script>
+    // Add your JavaScript code here
+    function handleClick(event) {
+        // Get the click coordinates relative to the image
+        const rect = event.target.getBoundingClientRect();
+        const x = event.clientX - rect.left;
+        const y = event.clientY - rect.top;
+
+        // Call your function with the coordinates
+        handleCoordinates(x, y);
+    }
+
+    // Function to handle the coordinates
+    function handleCoordinates(x, y) {
+        alert(`Clicked at (${x}, ${y})`);
+        // You can perform any other actions with the coordinates here
+    }
+</script>
+
+</body>
+</html>
